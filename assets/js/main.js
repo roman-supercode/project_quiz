@@ -59,5 +59,74 @@ let data = [
         choice: ["indian Ocean", "Pacific Ocean", "Atlantic Ocean", "Nile River"],
         answer: "Pacific Ocean"
     }
-]
+];
+
+const content = document.getElementById("content");
+
+const title = document.createElement("h1");
+title.setAttribute("id", "top");
+title.textContent = "QUIZ";
+document.body.insertBefore(title, content);
+
+const sprungmarke = document.createElement("a");
+sprungmarke.setAttribute("href", "#top");
+sprungmarke.classList.add("sprungmarke");
+sprungmarke.innerHTML = "&#128640;";
+document.body.appendChild(sprungmarke);
+
+
+data.forEach((element, index) => {
+    // Elemente erstellen
+    const section = document.createElement("section"); // Parent-container
+    const imgContainer = document.createElement("div"); // Img-container
+    const questionElement = document.createElement("h2"); // Question Heading 2
+    const choiceContainer = document.createElement("div"); // Choice-container
+    const outputMessage = document.createElement("p"); // Output message (right, false)
+
+    // Elemente im HTML-Dokument unterbringen
+    content.appendChild(section);
+    section.appendChild(imgContainer);
+    section.appendChild(questionElement);
+    section.appendChild(choiceContainer);
+    section.appendChild(outputMessage);
+
+    // Füge CSS Klassen
+    section.classList.add("section");
+    imgContainer.classList.add("imgContainer");
+    questionElement.classList.add("qHeading");
+    choiceContainer.classList.add("choiceContainer");
+    outputMessage.classList.add("message");
+
+    // Elemente beschreiben bzw. stylen
+    imgContainer.style.backgroundImage = `url(${element.url})`;
+    questionElement.textContent = element.question;
+
+    // Generiere einen Button für jede Antwortmöglichkeit
+    element.choice.forEach(choiceElement => {
+        // console.log(choiceElement);
+        const choiceButtons = document.createElement("button"); // Button for each choice
+        choiceButtons.textContent = choiceElement;
+        choiceButtons.classList.add("buttonStyle");
+        choiceContainer.appendChild(choiceButtons);
+        // console.log(choiceButtons.innerText);
+
+        choiceButtons.addEventListener("click", () => {
+            // console.log(choiceElement);
+            // console.log(choiceButtons.textContent);
+            choiceButtons.style.backgroundColor = "black";
+            if (element.answer.toString() === choiceButtons.textContent) {
+                choiceButtons.style.backgroundColor = "green";
+                outputMessage.textContent = "Richtig!";
+                outputMessage.style.color = "green";
+            } else {
+                choiceButtons.style.backgroundColor = "red";
+                outputMessage.textContent = "Leider Falsch";
+                outputMessage.style.color = "red";
+            }
+            // choiceButtons.style.backgroundColor = "inherit";
+        });
+        // choiceButtons.style.removeProperty(backgroundColor);
+    });
+
+});
 

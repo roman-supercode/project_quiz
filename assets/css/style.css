@@ -1,0 +1,58 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body h1 {
+    text-align: center;
+    font-size: 5rem;
+}
+
+.section {
+    width: 70%;
+    margin: 10rem auto;
+}
+
+.imgContainer {
+    width: 500px;
+    height: 350px;
+    margin: 0 auto;
+}
+
+.qHeading {
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.choiceContainer {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.buttonStyle {
+    padding: 1rem 1.5rem;
+    background: rgb(45, 45, 45);
+    color: #fff;
+    border-radius: 10px;
+    border: 2px solid rgb(176, 133, 255);
+}
+
+.message {
+    text-align: center;
+    font-size: 4rem;
+}
+
+.sprungmarke {
+    font-size: 3rem;
+    text-decoration: none;
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+    transform: rotateZ(315deg);
+}
